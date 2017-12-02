@@ -55,7 +55,7 @@ class Scene extends THREE.Object3D {
 	this.add (this.robots[1])
 
 	this.Earth = new Earth ()
-	this.Earth.position.set (5, -5, -20)
+	this.Earth.position.set (25, -5, -20)
 	this.add (this.Earth)
 
 	
@@ -76,7 +76,7 @@ class Earth extends THREE.Object3D {
     constructor () {
 	super()
 
-	var geometry   = new THREE.SphereGeometry(5, 32, 32)
+	var geometry   = new THREE.SphereGeometry(10, 32, 32)
 	var texture = new THREE.TextureLoader().load("globe.jpg");
 	var material  = new THREE.MeshPhongMaterial({map:texture, overdraw: 0.5})
 	var earthMesh = new THREE.Mesh(geometry, material)
