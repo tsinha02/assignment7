@@ -51,7 +51,7 @@ class Scene extends THREE.Object3D {
 			this.add (this.Earth)
 	   
 	this.rocket = new Rocket ()
-	this.rocket.position.set (-20, -30, 20)
+	this.rocket.position.set (-30, -30, 20)
 	this.add (this.rocket) 
     }
 	setRadius(value) {
@@ -165,7 +165,7 @@ class Rocket extends THREE.Object3D {
     constructor () {
 	super()
 	    
-	var geometry = new THREE.CylinderGeometry( 5, 5, 3, 32);
+	var geometry = new THREE.CylinderGeometry( 3, 3, 1, 32);
 	var material = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
 	var cylinder = new THREE.Mesh( geometry, material );
 	this.add( cylinder );
