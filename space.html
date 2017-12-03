@@ -171,10 +171,10 @@ class Rocket extends THREE.Object3D {
 	cylinder.position.set (0, 0, 0)
 	this.add( cylinder );
 	    
-	var geometry2 = new THREE.ConeGeometry( 1.5, 1.5, 2.5, 32);
+	var geometry2 = new THREE.ConeGeometry( 1.5, 5, 32);
 	var material = new THREE.MeshBasicMaterial( {color: 0xff0000} );
 	var cone = new THREE.Mesh( geometry2, material );
-	cone.position.set (0, 7, 0)
+	cone.position.set (0, 2.5, 0)
 	this.add( cone );
 
     }
