@@ -21,6 +21,9 @@
 var myScene
 var bool = 0
 var earthMesh
+var r = 35;
+var theta = 0;
+var dTheta = 2 * Math.PI / 1000;
 
 class Scene extends THREE.Object3D {
     constructor () {
@@ -53,6 +56,8 @@ class Scene extends THREE.Object3D {
 	this.rocket = new Rocket ()
 	this.rocket.position.set (-30, 2, 0.5)
 	this.add (this.rocket) 
+	    
+	    
     }
 	setRadius(value) {
 		value = value/10
@@ -69,6 +74,13 @@ class Scene extends THREE.Object3D {
 	for (var t of this.robots) {
 		t.tick()
 	}
+		
+		
+	theta += dTheta;
+	this.rocket.position.x = r * Math.cos(theta);
+	this.rocket.position.z = r * Math.sin(theta);
+	
+	
 	render(); 
     }
     
@@ -184,6 +196,8 @@ class Rocket extends THREE.Object3D {
 	this.add( cylinder2 );
 
     }
+	
+	
 }
 
 /*
