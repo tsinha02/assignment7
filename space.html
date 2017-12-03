@@ -110,13 +110,6 @@ class Earth extends THREE.Object3D {
 	
 	tick () {
 		
-	/*	if(bool == 1) {
-		var scale = myFunction();
-		console.log(scale);
-		earthMesh.scale.set(scale,scale,scale);
-		bool = 0;
-		} */
-		
 		
 		var a = earthMesh.rotation.y 
 		a += .0020 
@@ -172,7 +165,7 @@ class Rocket extends THREE.Object3D {
     constructor () {
 	super()
 	    
-	var geometry = new THREE.CylinderGeometry( 5, 5, 20, 20 );
+	var geometry = new THREE.CylinderGeometry( 5, 5, 10, 10);
 	var material = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
 	var cylinder = new THREE.Mesh( geometry, material );
 	this.add( cylinder );
