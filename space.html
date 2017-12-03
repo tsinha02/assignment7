@@ -211,8 +211,9 @@ class Robot extends THREE.Object3D {
     	group.rotation.y += 1 * delta;
 
    	 var time = clock.getElapsedTime() * 0.5;
-    	group.position.x = Math.cos(time) * 5;
+    	 group.position.x = Math.cos(time) * 5;
    	 group.position.z = Math.sin(time) * 5;
+	 this.earthMesh.rotation.set(delta, delta, delta)
 
 	/*
 	 * Head:
