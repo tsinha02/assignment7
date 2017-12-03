@@ -204,7 +204,8 @@ class Robot extends THREE.Object3D {
     tick () {
 	    
 	var earth = this.earthMesh.rotation.z
-        earth.rotation.z = 23.439281 * Math.PI / 180;
+        earth = 23.439281 * Math.PI / 180;
+	this.earthMesh.rotation.set (z,z,z)
 	/*
 	 * Head:
 	 * rotates 1 revolution (2*PI) in 9 seconds (540 1/60 sec ticks)
