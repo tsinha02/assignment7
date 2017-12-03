@@ -67,7 +67,7 @@ class Scene extends THREE.Object3D {
      */
     tick () { 
 	
-	this.Earth.tick()
+	//this.Earth.tick()
 	for (var t of this.robots) {
 		t.tick()
 	}
@@ -110,14 +110,14 @@ class Earth extends THREE.Object3D {
 
 	}
 	
-	tick () {
+	/*tick () {
 		
 		var a = this.earthMesh.rotation.y 
 		a += .0005 
 		this.earthMeshrotation.set (0, a, 0) 
 
 	}
-	
+	*/
 
 }
 	
