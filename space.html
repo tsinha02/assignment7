@@ -49,6 +49,10 @@ class Scene extends THREE.Object3D {
 			this.Earth.position.set (10, -5, -20)
 			this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
 			this.add (this.Earth)
+	    
+	this.rocket = new Rocket ()
+	this.rocket.position.set (-20, -30, 20)
+	this.add (this.rocket)
     }
 	setRadius(value) {
 		value = value/10
@@ -83,8 +87,7 @@ class SpaceField extends THREE.Object3D {
 		// create the material, using a texture of startfield
 		var material  = new THREE.MeshBasicMaterial()
 		material.map   = THREE.ImageUtils.loadTexture('starbackground.jpg')
-		material.side  = THREE.BackSide
-		// create the mesh based on geometry and material
+	 // create the mesh based on geometry and material
 		var mesh  = new THREE.Mesh(geometry, material)
 		scene.add(mesh)
 	}
@@ -163,6 +166,18 @@ function myFunction() {
 		}
 		
 }
+
+class Rocket extends THREE.Object3D {
+    constructor () {
+	super()
+	    
+	var geometry = new THREE.CylinderGeometry( 5, 5, 20, 32 );
+	var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+	var cylinder = new THREE.Mesh( geometry, material );
+	this.add( cylinder );
+
+	
+
 /*
  * We make a Robot out of other library objects
  */
