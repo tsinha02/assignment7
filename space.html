@@ -5,7 +5,7 @@
 
 <title>Space Simulation</title>
 
-<button onclick="myFunction()">Change the size of Earth</button>
+<button onclick="changeRadius(value)">Change the size of Earth</button>
 <script src="https://threejs.org/build/three.min.js"></script>
 <script src="https://threejs.org/examples/js/Detector.js"></script>
 <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
@@ -121,6 +121,12 @@ class Earth extends THREE.Object3D {
 
 
 	}
+	
+	changeRadius(value) {
+		var val = myFunction();
+		value = val;
+	}
+		
 	
 
 }
