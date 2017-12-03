@@ -24,6 +24,7 @@ var earthMesh
 var r = 35;
 var theta = 0;
 var dTheta = 2 * Math.PI / 1000;
+var textprop 
 
 class Scene extends THREE.Object3D {
     constructor () {
@@ -114,9 +115,9 @@ class SpaceText extends THREE.Object3D {
 	super()
 		var loader = new THREE.FontLoader();
 
-loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
+loader.load( 'https://threejs.org/examples/fonts/optimer_bold.typeface.json', function ( font ) {
 
-	var geometry = new THREE.TextGeometry( 'Hello three.js!', {
+	textprop = new THREE.TextGeometry( 'Hello three.js!', {
 		font: font,
 		size: 80,
 		height: 5,
