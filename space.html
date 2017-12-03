@@ -107,6 +107,15 @@ class Earth extends THREE.Object3D {
 
 
 	}
+	tick () {
+	    
+	 var delta = clock.getDelta();
+    	group.rotation.y += 1 * delta;
+
+   	 var time = clock.getElapsedTime() * 0.5;
+    	 group.position.x = Math.cos(time) * 5;
+   	 group.position.z = Math.sin(time) * 5;
+	}
 }
 /*
  * We make a Robot out of other library objects
@@ -208,13 +217,6 @@ class Robot extends THREE.Object3D {
      */
     tick () {
 	    
-	 var delta = clock.getDelta();
-    	group.rotation.y += 1 * delta;
-
-   	 var time = clock.getElapsedTime() * 0.5;
-    	 group.position.x = Math.cos(time) * 5;
-   	 group.position.z = Math.sin(time) * 5;
-	 
 	/*
 	 * Head:
 	 * rotates 1 revolution (2*PI) in 9 seconds (540 1/60 sec ticks)
