@@ -201,7 +201,10 @@ class Robot extends THREE.Object3D {
      * we should update everything we need in scene graph,
      * redraw is automatic.
      */
-    tick () { 
+    tick () {
+	    
+	var earth = this.earthMesh.rotation.z
+        earth.rotation.z = 23.439281 * Math.PI / 180;
 	/*
 	 * Head:
 	 * rotates 1 revolution (2*PI) in 9 seconds (540 1/60 sec ticks)
