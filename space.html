@@ -21,7 +21,7 @@
 
 // Global var for animation
 var myScene
-
+var bool = 0
 
 function makeSceneGraph () {
 	myScene = new Scene()
@@ -53,17 +53,22 @@ class Scene extends THREE.Object3D {
 	this.robots[1].rotation.set (0, -20 * Math.PI/180, 0)
 	this.add (this.robots[1])
 	
-	function myFunction() {
-    		var radius = prompt("Enter a number for the size of Earth", "10");
-    		if (radius != null) {
-        		document.getElementById("demo").innerHTML =
-        	this.Earth = new Earth(radius);
-		this.Earth.position.set (10, -5, -20)
-		this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
-		this.add (this.Earth)
+        	if(bool) {
+			var rad = myFunction();
+			this.Earth = new Earth (value)
+			this.Earth.position.set (10, -5, -20)
+			this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
+			this.add (this.Earth)
 
-    	}
-	
+    		}
+	    
+	    	else {
+			
+			this.Earth = new Earth (10)
+			this.Earth.position.set (10, -5, -20)
+			this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
+			this.add (this.Earth)
+		}
     }
 
     /*
@@ -124,6 +129,14 @@ class Earth extends THREE.Object3D {
 	*/
 
 }
+
+function myFunction() {
+		bool = 1;
+    		var radius = prompt("Enter a number for the size of Earth", "10");
+    		if (radius != null) {
+        		document.getElementById("demo").innerHTML = 
+			return radius;
+		}
 	
 
 /*
