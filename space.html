@@ -31,13 +31,6 @@ function makeSceneGraph () {
 	// Other initialization: when the mouse moves, call our function
 	document.addEventListener ("mousedown", onDocumentMouseDown, false)
 }
-function myFunction() {
-    var person = prompt("Please enter your name", "Harry Potter");
-    if (person != null) {
-        document.getElementById("demo").innerHTML =
-        "Hello " + person + "! How are you today?";
-    }
-}
 
 class Scene extends THREE.Object3D {
     constructor () {
@@ -61,7 +54,7 @@ class Scene extends THREE.Object3D {
 	this.add (this.robots[1])
 	    
 	    
-	this.Earth = new Earth ()
+	this.Earth = new Earth (10)
 	this.Earth.position.set (10, -5, -20)
 	this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
 	this.add (this.Earth)
@@ -104,9 +97,9 @@ class SpaceField extends THREE.Object3D {
  }
 
 class Earth extends THREE.Object3D {
-    constructor () {
+    constructor (int value) {
 	super()
-	var geometry   = new THREE.SphereGeometry(10, 32, 32)
+	var geometry   = new THREE.SphereGeometry(value, 32, 32)
 	var texture = new THREE.TextureLoader().load("globe.jpg");
 	var material  = new THREE.MeshPhongMaterial({map:texture, overdraw: 0.5})
 	material.bumpScale = 0.25
@@ -127,6 +120,15 @@ class Earth extends THREE.Object3D {
 	
 
 }
+	
+function myFunction() {
+    var radius = prompt("Enter a number for the size of Earth", "10");
+    if (radius != null) {
+        document.getElementById("demo").innerHTML =
+        Earth(radius);
+    }
+}
+
 /*
  * We make a Robot out of other library objects
  */
