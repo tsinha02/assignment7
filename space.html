@@ -22,40 +22,37 @@ var theta = 0;
 var dTheta = 2 * Math.PI / 1000;
 
 class Scene extends THREE.Object3D {
-    constructor () {
+	constructor () {
 
-	super()
-	this.SpaceField = new SpaceField ()
-	this.SpaceField.position.set(0,0,0)
-	this.add(this.SpaceField)
-	// Keep our robots in a list so timer can access
-	this.astronauts = []
+		super()
+		this.SpaceField = new SpaceField ()
+		this.SpaceField.position.set(0,0,0)
+		this.add(this.SpaceField)
+		// Keep our robots in a list so timer can access
+		this.astronauts = []
 
-	// First robot, position = WC origin to robot local origin
-	this.astronauts[0] = new Astronaut ()
-	this.astronauts[0].position.set (0, -5, -20)
-	this.add (this.astronauts[0])
+		// First robot, position = WC origin to robot local origin
+		this.astronauts[0] = new Astronaut ()
+		this.astronauts[0].position.set (0, -5, -20)
+		this.add (this.astronauts[0])
 
-	// A second robot, different local origin
-	this.astronauts[1] = new Astronaut ()
-	this.astronauts[1].position.set (-5, -5, 20)
-	this.astronauts[1].rotation.set (0, -20 * Math.PI/180, 0)
-	this.add (this.astronauts[1])
+		// A second robot, different local origin
+		this.astronauts[1] = new Astronaut ()
+		this.astronauts[1].position.set (-5, -5, 20)
+		this.astronauts[1].rotation.set (0, -20 * Math.PI/180, 0)
+		this.add (this.astronauts[1])
 
-	this.Earth = new Earth ()
-	this.Earth.position.set (10, -5, -20)
-	this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
-	this.add (this.Earth)
-	   
-	this.rocket = new Rocket ()
-	this.rocket.position.set (-10, 2, 0.5)
-	this.add (this.rocket) 
+		this.Earth = new Earth ()
+		this.Earth.position.set (10, -5, -20)
+		this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
+		this.add (this.Earth)
+
+		this.rocket = new Rocket ()
+		this.rocket.position.set (-10, 2, 0.5)
+		this.add (this.rocket) 
 	  
-	this.spacetext = new SpaceText ()
-	this.spacetext.postion.set(0,40,0)
-	this.add (this.spacetext)
-	    
-    }
+	}
+	
 	setRadius(value) {
 	value = value/10
 	this.Earth.setRadius(value)
