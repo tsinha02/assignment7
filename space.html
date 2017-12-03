@@ -65,7 +65,7 @@ class Scene extends THREE.Object3D {
      */
     tick () { 
 	    
-        this.Earth.rotation.y += .0005;
+        this.Earth.rotation.y -= .0005;
 	for (var r of this.robots) { 
 		r.tick() 
 	}
@@ -75,9 +75,9 @@ class Scene extends THREE.Object3D {
 }
 
 function animate () { 
-	requestAnimationFrame( animate ); 
 	myScene.tick() 
 	controls.update() 
+	requestAnimationFrame( animate ); 
 }
 		
 class SpaceField extends THREE.Object3D {
