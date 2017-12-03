@@ -64,7 +64,6 @@ class Scene extends THREE.Object3D {
      * Receive timer tick, pass it to objects that need it
      */
     tick () { 
-	this.Earth.render()
 	for (var r of this.robots) { 
 		r.tick() 
 	}
@@ -107,18 +106,6 @@ class Earth extends THREE.Object3D {
 
 
 	}
-	function render() {
-        requestAnimationFrame(render);
-
-        var delta = clock.getDelta();
-        group.rotation.y += 1 * delta;
-
-        var time = clock.getElapsedTime() * 0.5;
-        group.position.x = Math.cos(time) * 5;
-        group.position.z = Math.sin(time) * 5;
-
-        renderer.render(scene, camera);
-    }
 
 }
 /*
