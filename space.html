@@ -71,10 +71,10 @@ class Scene extends THREE.Object3D {
     
 }
 
-function animate () { 
+function animate () {
+	requestAnimationFrame( animate ); 
 	myScene.tick() 
 	controls.update() 
-	requestAnimationFrame( animate ); 
 }
 		
 class SpaceField extends THREE.Object3D {
