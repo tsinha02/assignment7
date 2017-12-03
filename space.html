@@ -116,8 +116,7 @@ class Earth extends THREE.Object3D {
 		a += .0020 
 		earthMesh.rotation.set (0, a, 0)
 	}
-		function setRadius(value) 
-		{
+		 setRadius(value) {
 			var geometry   = new THREE.SphereGeometry(value, 32, 32)
 			var texture = new THREE.TextureLoader().load("globe.jpg");
 			var material  = new THREE.MeshPhongMaterial({map:texture, overdraw: 0.5})
