@@ -38,25 +38,12 @@ animate = function () {
 
 class Scene extends THREE.Object3D {
     constructor () {
-	super()
+
+	this.SpaceField = new SpaceField ()
+	this.SpaceField.position.set(0,0,0)
+	this.add(this.SpaceField)
 	    
-	loader.load( 'spacebackground.jpg', function( texture ) {
-		backgroundMesh = new THREE.Mesh(
-			new THREE.PlaneGeometry(2, 2, 0),
-				new THREE.MeshBasicMaterial({
-				map: texture
-			})
-		);
-
-		backgroundMesh.material.depthTest = false;
-		backgroundMesh.material.depthWrite = false;
-
-		backgroundScene = new THREE.Scene();
-		backgroundCamera = new THREE.Camera();
-		backgroundScene.add( backgroundCamera );
-		backgroundScene.add( backgroundMesh );
-	});
-
+	    
 	// Keep our robots in a list so timer can access
 	this.robots = []
 
@@ -89,6 +76,18 @@ class Scene extends THREE.Object3D {
     }
 }
 		
+class SpaceField extends THREE.Object3D {
+	constructor  {
+	super()
+		var geometry  = new THREE.SphereGeometry(90, 32, 32)
+		// create the material, using a texture of startfield
+		var material  = new THREE.MeshBasicMaterial()
+		material.map   = THREE.ImageUtils.loadTexture('spacebackground.jpg')
+		material.side  = THREE.BackSide
+		// create the mesh based on geometry and material
+		var mesh  = new THREE.Mesh(geometry, material)
+	}
+ }
 
 class Earth extends THREE.Object3D {
     constructor () {
