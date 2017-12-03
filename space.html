@@ -39,6 +39,23 @@ animate = function () {
 class Scene extends THREE.Object3D {
     constructor () {
 	super()
+	    
+	loader.load( 'spacebackground.jpg', function( texture ) {
+		backgroundMesh = new THREE.Mesh(
+			new THREE.PlaneGeometry(2, 2, 0),
+				new THREE.MeshBasicMaterial({
+				map: texture
+			})
+		);
+
+		backgroundMesh.material.depthTest = false;
+		backgroundMesh.material.depthWrite = false;
+
+		backgroundScene = new THREE.Scene();
+		backgroundCamera = new THREE.Camera();
+		backgroundScene.add( backgroundCamera );
+		backgroundScene.add( backgroundMesh );
+	});
 
 	// Keep our robots in a list so timer can access
 	this.robots = []
@@ -55,7 +72,7 @@ class Scene extends THREE.Object3D {
 	this.add (this.robots[1])
 
 	this.Earth = new Earth ()
-	this.Earth.position.set (40, -5, -20)
+	this.Earth.position.set (10, -5, -20)
 	this.add (this.Earth)
 
 	
@@ -71,18 +88,12 @@ class Scene extends THREE.Object3D {
 	render(); 
     }
 }
+		
 
 class Earth extends THREE.Object3D {
     constructor () {
 	super()
 
-	new THREE.Mesh(
-  new THREE.SphereGeometry(90, 64, 64), 
-  new THREE.MeshBasicMaterial({
-    map: THREE.ImageUtils.loadTexture("spacebackground.jpg"), 
-    side: THREE.BackSide
-  })
-);
 	var geometry   = new THREE.SphereGeometry(10, 32, 32)
 	var texture = new THREE.TextureLoader().load("globe.jpg");
 	var material  = new THREE.MeshPhongMaterial({map:texture, overdraw: 0.5})
