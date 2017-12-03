@@ -17,7 +17,7 @@
 
 // Global var for animation
 var myScene
-
+var group = new THREE.Object3D();
 
 
 function makeSceneGraph () {
@@ -93,7 +93,6 @@ class SpaceField extends THREE.Object3D {
 class Earth extends THREE.Object3D {
     constructor () {
 	super()
-	 var group = new THREE.Object3D();
 	var geometry   = new THREE.SphereGeometry(10, 32, 32)
 	var texture = new THREE.TextureLoader().load("globe.jpg");
 	var material  = new THREE.MeshPhongMaterial({map:texture, overdraw: 0.5})
