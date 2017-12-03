@@ -13,10 +13,6 @@
 
 <script type="text/javascript">
 
-
-
-
-
 // Global var for animation
 var myScene
 var bool = 0
@@ -24,7 +20,6 @@ var earthMesh
 var r = 35;
 var theta = 0;
 var dTheta = 2 * Math.PI / 1000;
-var textprop 
 
 class Scene extends THREE.Object3D {
     constructor () {
@@ -47,12 +42,10 @@ class Scene extends THREE.Object3D {
 	this.astronauts[1].rotation.set (0, -20 * Math.PI/180, 0)
 	this.add (this.astronauts[1])
 
-	    
-			
-			this.Earth = new Earth ()
-			this.Earth.position.set (10, -5, -20)
-			this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
-			this.add (this.Earth)
+	this.Earth = new Earth ()
+	this.Earth.position.set (10, -5, -20)
+	this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
+	this.add (this.Earth)
 	   
 	this.rocket = new Rocket ()
 	this.rocket.position.set (-10, 2, 0.5)
@@ -64,30 +57,30 @@ class Scene extends THREE.Object3D {
 	    
     }
 	setRadius(value) {
-		value = value/10
-		this.Earth.setRadius(value)
+	value = value/10
+	this.Earth.setRadius(value)
 		
 	}
-    
+
     /*
      * Receive timer tick, pass it to objects that need it
      */
-    tick () { 
-	
-	this.Earth.tick()
-	for (var t of this.astronauts) {
-		t.tick()
-	}
-		
-		
-	theta += dTheta;
-	this.rocket.position.x = r * Math.cos(theta);
-	this.rocket.position.z = r * Math.sin(theta);
-	
-	
-	render(); 
-    }
-    
+	tick () { 
+
+		this.Earth.tick()
+		for (var t of this.astronauts) {
+			t.tick()
+		}
+
+
+		theta += dTheta;
+		this.rocket.position.x = r * Math.cos(theta);
+		this.rocket.position.z = r * Math.sin(theta);
+
+
+		render(); 
+    	}
+
 }
 
 function animate () {
@@ -98,7 +91,7 @@ function animate () {
 		
 class SpaceField extends THREE.Object3D {
 	constructor ()  {
-	super()
+		super()
 		var geometry  = new THREE.BoxGeometry(90, 90, 90)
 		// create the material, using a texture of startfield
 		var material  = new THREE.MeshBasicMaterial()
@@ -110,61 +103,30 @@ class SpaceField extends THREE.Object3D {
 	}
  }
 
-class SpaceText extends THREE.Object3D {
-	constructor () {
-	super()
-		var loader = new THREE.FontLoader();
-
-loader.load( 'https://threejs.org/examples/fonts/optimer_bold.typeface.json', function ( font ) {
-
-	textprop = new THREE.TextGeometry( 'Hello three.js!', {
-		font: font,
-		size: 80,
-		height: 5,
-		curveSegments: 12,
-		bevelEnabled: true,
-		bevelThickness: 10,
-		bevelSize: 8,
-		bevelSegments: 5
-	} );
-	
-	var material = new THREE.MeshBasicMaterial( {color: 0xff8000} );
-	var mesh = new THREE.Mesh(geometry, material)
-	scene.add(mesh)
-} );
-
-	}
-}
 class Earth extends THREE.Object3D {
-    constructor () {
-	super()
-	var geometry   = new THREE.SphereGeometry(10, 32, 32)
-	var texture = new THREE.TextureLoader().load("globe.jpg");
-	var material  = new THREE.MeshPhongMaterial({map:texture, overdraw: 0.5})
-	material.bumpScale = 0.25
-	earthMesh = new THREE.Mesh(geometry, material)
-	earthMesh.rotation.z = 23.439281 * Math.PI / 180;
-	scene.add(earthMesh)
-
-
+	constructor () {
+		super()
+		var geometry   = new THREE.SphereGeometry(10, 32, 32)
+		var texture = new THREE.TextureLoader().load("globe.jpg");
+		var material  = new THREE.MeshPhongMaterial({map:texture, overdraw: 0.5})
+		material.bumpScale = 0.25
+		earthMesh = new THREE.Mesh(geometry, material)
+		earthMesh.rotation.z = 23.439281 * Math.PI / 180;
+		scene.add(earthMesh)
 	}
 	
 	tick () {
-		
 		
 		var a = earthMesh.rotation.y 
 		a += .0020 
 		earthMesh.rotation.set (0, a, 0)
 	}
-		 setRadius(value) {
-			earthMesh.scale.x = value;
-			earthMesh.scale.y = value;
-			earthMesh.scale.z = value;
-		}
-
-
-		
 	
+	setRadius(value) {
+		earthMesh.scale.x = value;
+		earthMesh.scale.y = value;
+		earthMesh.scale.z = value;
+	}
 
 }
 	
@@ -174,227 +136,225 @@ function changeRadius() {
 }
 
 function keyPressed(e){
-		  e.preventDefault();
-		  switch(e.key) {
-			case 'ArrowUp':
-			earthMesh.rotateZ(-0.1);
-			break;
-		    case 'ArrowDown':
-			earthMesh.rotateZ(0.1);
-			break;
-		    case 'ArrowLeft':
-			earthMesh.rotateY(-0.1);
-			break;
-		    case 'ArrowRight':
-			earthMesh.rotateY(0.1);
-			break;
-		  }
-		  render();
+	e.preventDefault();
+  	switch(e.key) {
+		case 'ArrowUp':
+		earthMesh.rotateZ(-0.1);
+		break;
+    	case 'ArrowDown':
+		earthMesh.rotateZ(0.1);
+		break;
+    	case 'ArrowLeft':
+		earthMesh.rotateY(-0.1);
+		break;
+    	case 'ArrowRight':
+		earthMesh.rotateY(0.1);
+		break;
+ 	}
+  	render();
 }
 
 function myFunction() {
-		bool = 1;
-    		var radius = prompt("Enter a number for the size of Earth, anywhere in between 10-20 works best", "10");
-    		if (radius != null) {
-			console.log(radius);
-        		return radius;
-		}
+	bool = 1;
+	var radius = prompt("Enter a number for the size of Earth, anywhere in between 10-20 works best", "10");
+	if (radius != null) {
+		console.log(radius);
+		return radius;
+	}
 		
 }
 
 class Rocket extends THREE.Object3D {
-    constructor () {
-	super()
-	    
-	var geometry = new THREE.CylinderGeometry( 1.5, 1.5, 7, 32);
-	var material = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
-	var cylinder = new THREE.Mesh( geometry, material );
-	cylinder.position.set (0, 0, 0)
-	this.add( cylinder );
-	    
-	var geometry2 = new THREE.ConeGeometry( 1.5, 5, 32);
-	var material = new THREE.MeshBasicMaterial( {color: 0xff0000} );
-	var cone = new THREE.Mesh( geometry2, material );
-	cone.position.set (0, 6, 0)
-	this.add( cone );
+	constructor () {
+		super()
 
-	var geometry3 = new THREE.CylinderGeometry( 0, 1.1, 4, 10);
-	var material = new THREE.MeshBasicMaterial( {color: 0xff8000} );
-	var cylinder2 = new THREE.Mesh( geometry3, material );
-	cylinder2.position.set (0, -5, 0)
-	this.add( cylinder2 );
+		var geometry = new THREE.CylinderGeometry( 1.5, 1.5, 7, 32);
+		var material = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
+		var cylinder = new THREE.Mesh( geometry, material );
+		cylinder.position.set (0, 0, 0)
+		this.add( cylinder );
 
-    }
-	
-	
+		var geometry2 = new THREE.ConeGeometry( 1.5, 5, 32);
+		var material = new THREE.MeshBasicMaterial( {color: 0xff0000} );
+		var cone = new THREE.Mesh( geometry2, material );
+		cone.position.set (0, 6, 0)
+		this.add( cone );
+
+		var geometry3 = new THREE.CylinderGeometry( 0, 1.1, 4, 10);
+		var material = new THREE.MeshBasicMaterial( {color: 0xff8000} );
+		var cylinder2 = new THREE.Mesh( geometry3, material );
+		cylinder2.position.set (0, -5, 0)
+		this.add( cylinder2 );
+	}
+		
 }
 
 /*
  * We make a Robot out of other library objects
  */
 class Astronaut extends THREE.Object3D {
-    constructor () {
-	super()
+	constructor () {
+		super()
 
-	/*
-         * Initialize some Materials we will be using
-	 */
-	var platform = new THREE.MeshPhongMaterial ({ color: 0x4c4c33 })
-	var pants = new THREE.MeshPhongMaterial ({ color: 0x0c0c4c })
-	var shirt = new THREE.MeshPhongMaterial ({ color: 0xfe6e6a })
-	var skin = new THREE.MeshPhongMaterial ({ color: 0xffd9b3, shininess: 60 })
+		/*
+		 * Initialize some Materials we will be using
+		 */
+		var platform = new THREE.MeshPhongMaterial ({ color: 0x4c4c33 })
+		var pants = new THREE.MeshPhongMaterial ({ color: 0x0c0c4c })
+		var shirt = new THREE.MeshPhongMaterial ({ color: 0xfe6e6a })
+		var skin = new THREE.MeshPhongMaterial ({ color: 0xffd9b3, shininess: 60 })
 
-	/*
-	 * The base
-	 */
-	// The bottom flat part of base
+		/*
+		 * The base
+		 */
+		// The bottom flat part of base
 
-	// The column
-	var column1 = new THREE.Mesh (
-		new THREE.CylinderGeometry (.2, .4, 2.5, 32, 32, false), pants)
-	column1.position.set (-0.5, 1.0 + 2.5/2.0, 0)
-	this.add (column1)
+		// The column
+		var column1 = new THREE.Mesh (
+			new THREE.CylinderGeometry (.2, .4, 2.5, 32, 32, false), pants)
+		column1.position.set (-0.5, 1.0 + 2.5/2.0, 0)
+		this.add (column1)
 
-	var column2 = new THREE.Mesh (
-		new THREE.CylinderGeometry (.2, .4, 2.5, 32, 32, false), pants)
-	column2.position.set (0.5, 1.0 + 2.5/2.0, 0)
-	this.add (column2)
-	/*
-	 * Upper body
-	 */
-	// First make root node for the rest of the upper body,
-	// and then work from its local origin
-	var upperbody = new THREE.Object3D ()
-	upperbody.position.set (0, 1+2.5, 0)
-	this.add (upperbody)
+		var column2 = new THREE.Mesh (
+			new THREE.CylinderGeometry (.2, .4, 2.5, 32, 32, false), pants)
+		column2.position.set (0.5, 1.0 + 2.5/2.0, 0)
+		this.add (column2)
+		/*
+		 * Upper body
+		 */
+		// First make root node for the rest of the upper body,
+		// and then work from its local origin
+		var upperbody = new THREE.Object3D ()
+		upperbody.position.set (0, 1+2.5, 0)
+		this.add (upperbody)
 
-	// Trunk
-	var trunk = new THREE.Mesh (
-		new THREE.BoxGeometry (2, 3, 2), shirt)
-	trunk.position.set (0, 1.5, 0)
-	upperbody.add (trunk)
+		// Trunk
+		var trunk = new THREE.Mesh (
+			new THREE.BoxGeometry (2, 3, 2), shirt)
+		trunk.position.set (0, 1.5, 0)
+		upperbody.add (trunk)
 
-	/*
-	 * Head animation:
-	 * Insert an extra transform node, Identity for now,
-	 * which we will modify on each tick.
-	 * Things the timer needs to access are stored in ivars
-	 */
-	this.headMove = new THREE.Object3D () 
-	upperbody.add (this.headMove) 
+		/*
+		 * Head animation:
+		 * Insert an extra transform node, Identity for now,
+		 * which we will modify on each tick.
+		 * Things the timer needs to access are stored in ivars
+		 */
+		this.headMove = new THREE.Object3D () 
+		upperbody.add (this.headMove) 
 
-	// Head
-	var head = new THREE.Mesh (
-		new THREE.SphereBufferGeometry(1, 32, 32 ), skin)
-	head.position.set (0, 3 + 1/2., 0)
-	this.headMove.add (head) 
+		// Head
+		var head = new THREE.Mesh (
+			new THREE.SphereBufferGeometry(1, 32, 32 ), skin)
+		head.position.set (0, 3 + 1/2., 0)
+		this.headMove.add (head) 
 
-	// Right armhand: first we insert a transform node, from upperbody
-	// local origin of armhand, so the rotation will happen at the
-	// right point
-	var rightArmHandTrans = new THREE.Object3D ()
-	rightArmHandTrans.position.set (-1.25, 3, 0)
-	upperbody.add (rightArmHandTrans) 
+		// Right armhand: first we insert a transform node, from upperbody
+		// local origin of armhand, so the rotation will happen at the
+		// right point
+		var rightArmHandTrans = new THREE.Object3D ()
+		rightArmHandTrans.position.set (-1.25, 3, 0)
+		upperbody.add (rightArmHandTrans) 
 
-	// Animation for right armhand: again, insert transform and remember it
-	// Must also remember current direction (+1 for increasing, -1 for decreasing)
-	// we stash that in the userData field in scene graph node
-	this.rightMove = new THREE.Object3D () 
-	this.rightMove.userData = 1 // Our own data field 
-	rightArmHandTrans.add (this.rightMove) 
+		// Animation for right armhand: again, insert transform and remember it
+		// Must also remember current direction (+1 for increasing, -1 for decreasing)
+		// we stash that in the userData field in scene graph node
+		this.rightMove = new THREE.Object3D () 
+		this.rightMove.userData = 1 // Our own data field 
+		rightArmHandTrans.add (this.rightMove) 
 
-	// Right armhand itself
-	var rightArmHand = new ArmHand (shirt, skin)
-	this.rightMove.add (rightArmHand) 
+		// Right armhand itself
+		var rightArmHand = new ArmHand (shirt, skin)
+		this.rightMove.add (rightArmHand) 
 
-	// Animation for left armhand: similarly
-	var leftArmHandTrans = new THREE.Object3D()
-	leftArmHandTrans.position.set (1.25, 3, 0)
-	leftArmHandTrans.rotation.set (0, Math.PI, 0)
-	upperbody.add (leftArmHandTrans) 
+		// Animation for left armhand: similarly
+		var leftArmHandTrans = new THREE.Object3D()
+		leftArmHandTrans.position.set (1.25, 3, 0)
+		leftArmHandTrans.rotation.set (0, Math.PI, 0)
+		upperbody.add (leftArmHandTrans) 
 
-	this.leftMove = new THREE.Object3D () 
-	this.leftMove.userData = 1 
-	leftArmHandTrans.add (this.leftMove) 
+		this.leftMove = new THREE.Object3D () 
+		this.leftMove.userData = 1 
+		leftArmHandTrans.add (this.leftMove) 
 
-	// Left armhand
-	var leftArmHand = new ArmHand (shirt, skin)
-	this.leftMove.add (leftArmHand) 
-    }
-
-    /*
-     * Received whenever timer tick's,
-     * we should update everything we need in scene graph,
-     * redraw is automatic.
-     */
-    tick () {
-	    
-	/*
-	 * Head:
-	 * rotates 1 revolution (2*PI) in 9 seconds (540 1/60 sec ticks)
-	 * goes round and round, rather than oscillate back and forth.
-	 * We retrieve the old rotation angle out of the scene graph,
-	 * modify it, and put it back in
-	 */
-	var a = this.headMove.rotation.y 
-	a += (2 * Math.PI) / (9*60) 
-	if (a > 2*Math.PI) { 
-		a -= 2 * Math.PI 
+		// Left armhand
+		var leftArmHand = new ArmHand (shirt, skin)
+		this.leftMove.add (leftArmHand) 
 	}
-	this.headMove.rotation.set (0, a, 0) 
 
 	/*
-	 * Right armhand:
-	 * rotates about (local) X axis,
-	 * oscillates back and forth from -50 to +50 degrees,
-	 * 5 seconds (5*60 ticks) total for the 100 (ie 2*50) degree travel.
-	 * Must also remember current direction (increasing/decreasing).
-	 */
-	a = this.rightMove.rotation.x 
-	a += (this.rightMove.userData * 2*50 * Math.PI/180) / (5*60) 
-	if (Math.abs(a) > 50 * Math.PI/180) { 
-		this.rightMove.userData *= -1; 
-	}
-	this.rightMove.rotation.set (a, 0, 0) 
+	* Received whenever timer tick's,
+	* we should update everything we need in scene graph,
+	* redraw is automatic.
+	*/
+	tick () {
 
-	/*
-	 * Left armhand:
-	 * oscillates -30 to +30 degrees in 1 second
-	 */
-	a = this.leftMove.rotation.x 
-	a += (this.leftMove.userData * 2*30 * Math.PI/180) / (1*60) 
-	if (Math.abs(a) > 30 * Math.PI/180) { 
-		this.leftMove.userData *= -1; 
-	}
-	this.leftMove.rotation.set (a, 0, 0) 
-    }
+		/*
+		 * Head:
+		 * rotates 1 revolution (2*PI) in 9 seconds (540 1/60 sec ticks)
+		 * goes round and round, rather than oscillate back and forth.
+		 * We retrieve the old rotation angle out of the scene graph,
+		 * modify it, and put it back in
+		 */
+		var a = this.headMove.rotation.y 
+		a += (2 * Math.PI) / (9*60) 
+		if (a > 2*Math.PI) { 
+			a -= 2 * Math.PI 
+		}
+		this.headMove.rotation.set (0, a, 0) 
+
+		/*
+		 * Right armhand:
+		 * rotates about (local) X axis,
+		 * oscillates back and forth from -50 to +50 degrees,
+		 * 5 seconds (5*60 ticks) total for the 100 (ie 2*50) degree travel.
+		 * Must also remember current direction (increasing/decreasing).
+		 */
+		a = this.rightMove.rotation.x 
+		a += (this.rightMove.userData * 2*50 * Math.PI/180) / (5*60) 
+		if (Math.abs(a) > 50 * Math.PI/180) { 
+			this.rightMove.userData *= -1; 
+		}
+		this.rightMove.rotation.set (a, 0, 0) 
+
+		/*
+		 * Left armhand:
+		 * oscillates -30 to +30 degrees in 1 second
+		 */
+		a = this.leftMove.rotation.x 
+		a += (this.leftMove.userData * 2*30 * Math.PI/180) / (1*60) 
+		if (Math.abs(a) > 30 * Math.PI/180) { 
+			this.leftMove.userData *= -1; 
+		}
+		this.leftMove.rotation.set (a, 0, 0) 
+    	}
 }
 
 /*
  * Separate object that makes the Arm + Hand assembly
  */
 class ArmHand extends THREE.Object3D {
-    constructor (shirt, skin) {
-	super()
+	constructor (shirt, skin) {
+		super()
 
-	// Arm
-	var arm = new THREE.Mesh (
+		// Arm
+		var arm = new THREE.Mesh (
 		new THREE.BoxGeometry (0.5, 2.5, 0.5), shirt)
-	arm.position.set (0, -1.25, 0)
-	this.add (arm)
+		arm.position.set (0, -1.25, 0)
+		this.add (arm)
 
-	// Finger
-	var finger = new THREE.Mesh (
+		// Finger
+		var finger = new THREE.Mesh (
 		new THREE.BoxGeometry (0.1, .5, .5), skin)
-	finger.position.set (-0.25+0.05, -2.5-0.25, 0)
-	this.add (finger)
+		finger.position.set (-0.25+0.05, -2.5-0.25, 0)
+		this.add (finger)
 
-	// Thumb
-	var thumb = new THREE.Mesh (
+		// Thumb
+		var thumb = new THREE.Mesh (
 		new THREE.BoxGeometry (0.1, .5, .5), skin)
-	thumb.position.set (0.25-0.1-0.05, -2.5-0.25, 0.)
-	this.add (thumb)
-    }
+		thumb.position.set (0.25-0.1-0.05, -2.5-0.25, 0.)
+		this.add (thumb)
+    	}
 }
 
 /*
@@ -413,13 +373,6 @@ function onDocumentMouseDown (event) {
 
 	// Returns array of all objects in scene with which the ray intersects
 	var intersects = raycaster.intersectObjects (scene.children, true); 
-	
-	// If there were any intersections, take the first (ie nearest)
-/*	if (intersects.length > 0) { 
-		intersects[0].object.material = 
-			new THREE.MeshPhongMaterial ({ color: 0xff0000 })
-		render()
-	}*/
 }
 	
 
