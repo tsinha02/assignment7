@@ -31,12 +31,7 @@ function makeSceneGraph () {
 	document.addEventListener ("mousedown", onDocumentMouseDown, false)
 }
 
-// This will override the one in boiler.js
-animate = function () { 
-	requestAnimationFrame( animate ); 
-	myScene.tick() 
-	controls.update() 
-}
+
 
 class Scene extends THREE.Object3D {
     constructor () {
@@ -65,7 +60,12 @@ class Scene extends THREE.Object3D {
 
 	
     }
-
+	// This will override the one in boiler.js
+animate = function () { 
+	requestAnimationFrame( animate ); 
+	myScene.tick() 
+	controls.update() 
+}
     /*
      * Receive timer tick, pass it to objects that need it
      */
