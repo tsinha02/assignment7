@@ -51,7 +51,9 @@ class Scene extends THREE.Object3D {
 			this.add (this.Earth)
     }
 	setRadius(value) {
+		value = value/10
 		this.Earth.setRadius(value)
+		
 	}
     
     /*
