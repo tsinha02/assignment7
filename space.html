@@ -109,32 +109,7 @@ class Earth extends THREE.Object3D {
 	}
 	tick () {
 		
-	/*
-	 * Head:
-	 * rotates 1 revolution (2*PI) in 9 seconds (540 1/60 sec ticks)
-	 * goes round and round, rather than oscillate back and forth.
-	 * We retrieve the old rotation angle out of the scene graph,
-	 * modify it, and put it back in
-	 */
-	
-	var a = this.earthMesh.rotation.z
-	a += (2 * Math.PI) / (9*60) 
-	if (a > 2*Math.PI) { 
-		a -= 2 * Math.PI 
 	}
-	this.earthMesh.rotation.set (0, a, 0) 
-	}
-
-	/*
-	    
-	 var delta = clock.getDelta();
-    	group.rotation.y += 1 * delta;
-
-   	 var time = clock.getElapsedTime() * 0.5;
-    	 group.position.x = Math.cos(time) * 10000;
-   	 group.position.z = Math.sin(time) * 10000;
-	}
-	*/
 }
 /*
  * We make a Robot out of other library objects
