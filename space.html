@@ -49,10 +49,10 @@ class Scene extends THREE.Object3D {
 			this.Earth.position.set (10, -5, -20)
 			this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
 			this.add (this.Earth)
-	/*    
+	   
 	this.rocket = new Rocket ()
 	this.rocket.position.set (-20, -30, 20)
-	this.add (this.rocket) */
+	this.add (this.rocket) 
     }
 	setRadius(value) {
 		value = value/10
@@ -160,7 +160,7 @@ function keyPressed(e){
 
 function myFunction() {
 		bool = 1;
-    		var radius = prompt("Enter a number for the size of Earth", "10");
+    		var radius = prompt("Enter a number for the size of Earth, anywhere in between 10-20 works best", "10");
     		if (radius != null) {
 			console.log(radius);
         		return radius;
