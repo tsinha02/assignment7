@@ -38,11 +38,6 @@ animate = function () {
 
 class Scene extends THREE.Object3D {
     constructor () {
-
-	this.SpaceField = new SpaceField ()
-	this.SpaceField.position.set(0,0,0)
-	this.add(this.SpaceField)
-	    
 	    
 	// Keep our robots in a list so timer can access
 	this.robots = []
@@ -58,6 +53,11 @@ class Scene extends THREE.Object3D {
 	this.robots[1].rotation.set (0, -20 * Math.PI/180, 0)
 	this.add (this.robots[1])
 
+	
+	this.SpaceField = new SpaceField ()
+	this.SpaceField.position.set(0,0,0)
+	this.add(this.SpaceField)
+	    
 	this.Earth = new Earth ()
 	this.Earth.position.set (10, -5, -20)
 	this.add (this.Earth)
