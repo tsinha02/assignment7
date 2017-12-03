@@ -117,13 +117,7 @@ class Earth extends THREE.Object3D {
 		earthMesh.rotation.set (0, a, 0)
 	}
 		 setRadius(value) {
-			var geometry   = new THREE.SphereGeometry(value, 32, 32)
-			var texture = new THREE.TextureLoader().load("globe.jpg");
-			var material  = new THREE.MeshPhongMaterial({map:texture, overdraw: 0.5})
-			material.bumpScale = 0.25
-			earthMesh = new THREE.Mesh(geometry, material)
-			earthMesh.rotation.z = 23.439281 * Math.PI / 180;
-			scene.add(earthMesh)	
+			earthMesh.scale.x = value;
 		}
 
 
