@@ -30,18 +30,18 @@ class Scene extends THREE.Object3D {
 	this.SpaceField.position.set(0,0,0)
 	this.add(this.SpaceField)
 	// Keep our robots in a list so timer can access
-	this.robots = []
+	this.astronauts = []
 
 	// First robot, position = WC origin to robot local origin
-	this.robots[0] = new Robot ()
-	this.robots[0].position.set (0, -5, -20)
-	this.add (this.robots[0])
+	this.astronauts[0] = new Astronaut ()
+	this.astronauts[0].position.set (0, -5, -20)
+	this.add (this.astronauts[0])
 
 	// A second robot, different local origin
-	this.robots[1] = new Robot ()
-	this.robots[1].position.set (-5, -5, 20)
-	this.robots[1].rotation.set (0, -20 * Math.PI/180, 0)
-	this.add (this.robots[1])
+	this.astronauts[1] = new Astronaut ()
+	this.astronauts[1].position.set (-5, -5, 20)
+	this.astronauts[1].rotation.set (0, -20 * Math.PI/180, 0)
+	this.add (this.astronauts[1])
 
 	    
 			
@@ -189,7 +189,7 @@ class Rocket extends THREE.Object3D {
 /*
  * We make a Robot out of other library objects
  */
-class Robot extends THREE.Object3D {
+class Astronaut extends THREE.Object3D {
     constructor () {
 	super()
 
