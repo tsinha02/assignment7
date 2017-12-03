@@ -115,7 +115,7 @@ class Earth extends THREE.Object3D {
 		var a = earthMesh.rotation.y 
 		a += .0020 
 		earthMesh.rotation.set (0, a, 0)
-		
+	}
 		function setRadius(value) 
 		{
 			var geometry   = new THREE.SphereGeometry(value, 32, 32)
@@ -126,11 +126,7 @@ class Earth extends THREE.Object3D {
 			earthMesh.rotation.z = 23.439281 * Math.PI / 180;
 			scene.add(earthMesh)	
 		}
-		
-		
 
-
-	}
 
 		
 	
