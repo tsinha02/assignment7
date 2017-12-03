@@ -165,7 +165,7 @@ class Rocket extends THREE.Object3D {
     constructor () {
 	super()
 	    
-	var geometry = new THREE.CylinderGeometry( 3, 3, 1, 32);
+	var geometry = new THREE.CylinderGeometry( 0.5, 0.5, 2, 32);
 	var material = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
 	var cylinder = new THREE.Mesh( geometry, material );
 	this.add( cylinder );
