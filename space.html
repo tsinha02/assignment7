@@ -45,7 +45,7 @@ class Scene extends THREE.Object3D {
 
 	    
 			
-			this.Earth = new Earth (10)
+			this.Earth = new Earth ()
 			this.Earth.position.set (10, -5, -20)
 			this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
 			this.add (this.Earth)
@@ -87,9 +87,9 @@ class SpaceField extends THREE.Object3D {
  }
 
 class Earth extends THREE.Object3D {
-    constructor (value) {
+    constructor () {
 	super()
-	var geometry   = new THREE.SphereGeometry(value, 32, 32)
+	var geometry   = new THREE.SphereGeometry(10, 32, 32)
 	var texture = new THREE.TextureLoader().load("globe.jpg");
 	var material  = new THREE.MeshPhongMaterial({map:texture, overdraw: 0.5})
 	material.bumpScale = 0.25
@@ -114,19 +114,30 @@ class Earth extends THREE.Object3D {
 		a += .0020 
 		earthMesh.rotation.set (0, a, 0)
 		
+		function setRadius(value) 
+		{
+			var geometry   = new THREE.SphereGeometry(value, 32, 32)
+			var texture = new THREE.TextureLoader().load("globe.jpg");
+			var material  = new THREE.MeshPhongMaterial({map:texture, overdraw: 0.5})
+			material.bumpScale = 0.25
+			earthMesh = new THREE.Mesh(geometry, material)
+			earthMesh.rotation.z = 23.439281 * Math.PI / 180;
+			scene.add(earthMesh)	
+		}
 		
 		
 
 
 	}
-	
-	changeRadius(value) {
-		var val = myFunction();
-		value = val;
-	}
+
 		
 	
 
+}
+	
+function changeRadius() {
+	var val = myFunction();
+	setRadius(val);
 }
 
 function keyPressed(e){
@@ -363,7 +374,7 @@ function makeSceneGraph () {
 
 
 </script>
-<button onclick="changeRadius(value)">Change the size of Earth</button>
+<button onclick="changeRadius()">Change the size of Earth</button>
 </head>
 
 <body style="margin: 0px">
