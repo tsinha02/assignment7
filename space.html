@@ -89,6 +89,7 @@ class SpaceField extends THREE.Object3D {
 		material.map   = THREE.ImageUtils.loadTexture('starbackground.jpg')
 	 // create the mesh based on geometry and material
 		var mesh  = new THREE.Mesh(geometry, material)
+		mesh.side = THREE.backside
 		scene.add(mesh)
 	}
  }
