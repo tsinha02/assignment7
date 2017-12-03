@@ -52,25 +52,16 @@ class Scene extends THREE.Object3D {
 	this.robots[1].position.set (-5, -5, -20)
 	this.robots[1].rotation.set (0, -20 * Math.PI/180, 0)
 	this.add (this.robots[1])
-	
-        /*	if(bool != 0) {
-			var rad = myFunction();
-			this.Earth = new Earth (value)
-			this.Earth.position.set (10, -5, -20)
-			this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
-			this.add (this.Earth)
 
-    		}
 	    
-	    	*/else {
 			
 			this.Earth = new Earth (10)
 			this.Earth.position.set (10, -5, -20)
 			this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
 			this.add (this.Earth)
 		
+    
     }
-
     /*
      * Receive timer tick, pass it to objects that need it
      */
