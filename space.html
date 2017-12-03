@@ -50,8 +50,10 @@ class Scene extends THREE.Object3D {
 	this.robots[1].rotation.set (0, -20 * Math.PI/180, 0)
 	this.add (this.robots[1])
 	    
+	    
 	this.Earth = new Earth ()
 	this.Earth.position.set (10, -5, -20)
+	this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
 	this.add (this.Earth)
 
 	
@@ -62,9 +64,7 @@ class Scene extends THREE.Object3D {
      */
     tick () { 
 	
-	for (var r of this.robots) { 
-		r.tick() 
-	}
+	this.Earth.tick()
 	for (var t of this.Earth) {
 		t.tick()
 	}
