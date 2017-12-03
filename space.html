@@ -133,11 +133,11 @@ class Earth extends THREE.Object3D {
 function myFunction() {
 		bool = 1;
     		var radius = prompt("Enter a number for the size of Earth", "10");
-    		//if (radius != null) {
-        		var rad = document.getElementById(radius).value;
-		//}
-		console.log(rad);
-		return rad;
+    		if (radius != null) {
+			console.log(radius);
+        		return radius;
+		}
+		
 }
 /*
  * We make a Robot out of other library objects
