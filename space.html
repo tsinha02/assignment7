@@ -32,13 +32,6 @@ function makeSceneGraph () {
 }
 
 
-// This will override the one in boiler.js
-animate = function () { 
-	requestAnimationFrame( animate ); 
-	myScene.tick() 
-	controls.update() 
-}
-
 class Scene extends THREE.Object3D {
     constructor () {
 
@@ -79,6 +72,11 @@ class Scene extends THREE.Object3D {
     }
 }
 
+function animate () { 
+	requestAnimationFrame( animate ); 
+	myScene.tick() 
+	controls.update() 
+}
 		
 class SpaceField extends THREE.Object3D {
 	constructor ()  {
