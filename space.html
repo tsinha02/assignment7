@@ -70,10 +70,10 @@ class Scene extends THREE.Object3D {
      * Receive timer tick, pass it to objects that need it
      */
     tick () { 
+	this.Earth.tick()
 	for (var r of this.robots) { 
 		r.tick() 
 	}
-	this.Earth.tick()
 	render(); 
     }
 }
