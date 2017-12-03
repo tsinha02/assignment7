@@ -109,9 +109,9 @@ class Earth extends THREE.Object3D {
 	
 	tick () {
 		
-		var a = this.earthMesh.rotation.y 
+		var a = this.rotation.y 
 		a += .0005 
-		this.earthMesh.rotation.set (0, a, 0) 
+		this.rotation.set (0, a, 0) 
 
 	}
 	
