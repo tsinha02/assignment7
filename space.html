@@ -93,7 +93,7 @@ class SpaceField extends THREE.Object3D {
 class Earth extends THREE.Object3D {
     constructor () {
 	super()
-	var geometry   = new THREE.SphereGeometry(10, 32, 32)
+	var geometry   = new THREE.SphereGeometry(10, 32, 28)
 	var texture = new THREE.TextureLoader().load("globe.jpg");
 	var material  = new THREE.MeshPhongMaterial({map:texture, overdraw: 0.5})
 	material.bumpScale = 0.25
