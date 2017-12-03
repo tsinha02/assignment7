@@ -14,9 +14,11 @@
 <script src="lights.js"></script>
 
 <script type="text/javascript">
+
+<button onclick="myFunction()">Change the size of Earth</button>
 	
-<input type="text" id="userInput">give me input</input>
-<button onclick="test()">Submit</button>
+
+
 
 // Global var for animation
 var myScene
@@ -30,13 +32,13 @@ function makeSceneGraph () {
 	// Other initialization: when the mouse moves, call our function
 	document.addEventListener ("mousedown", onDocumentMouseDown, false)
 }
-	
-        function test()
-        {
-            var userInput = document.getElementById("userInput").value;
-            document.write(userInput);
-        }
-    
+function myFunction() {
+    var person = prompt("Please enter your name", "Harry Potter");
+    if (person != null) {
+        document.getElementById("demo").innerHTML =
+        "Hello " + person + "! How are you today?";
+    }
+}
 
 class Scene extends THREE.Object3D {
     constructor () {
