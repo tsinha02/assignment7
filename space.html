@@ -22,6 +22,7 @@
 // Global var for animation
 var myScene
 var bool = 0
+var earthMesh
 
 
 function makeSceneGraph () {
@@ -99,7 +100,6 @@ class SpaceField extends THREE.Object3D {
  }
 
 class Earth extends THREE.Object3D {
-    var earthMesh
     constructor (value) {
 	super()
 	var geometry   = new THREE.SphereGeometry(value, 32, 32)
