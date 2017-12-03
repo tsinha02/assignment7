@@ -49,7 +49,9 @@ class Scene extends THREE.Object3D {
 			this.Earth.position.set (10, -5, -20)
 			this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
 			this.add (this.Earth)
-		
+	setRadius() {
+		this.Earth.setRadius(value)
+	}
     
     }
     /*
@@ -137,7 +139,7 @@ class Earth extends THREE.Object3D {
 	
 function changeRadius() {
 	var val = myFunction();
-	myScene.Earth.setRadius(val);
+	myScene.setRadius(val);
 }
 
 function keyPressed(e){
