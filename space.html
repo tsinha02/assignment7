@@ -54,7 +54,7 @@ class Scene extends THREE.Object3D {
 	this.add (this.robots[1])
 	    
 	    
-	this.Earth = new Earth (10)
+	this.Earth = new Earth (value)
 	this.Earth.position.set (10, -5, -20)
 	this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
 	this.add (this.Earth)
