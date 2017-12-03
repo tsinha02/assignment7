@@ -38,12 +38,12 @@ class Scene extends THREE.Object3D {
 
 		// A second robot, different local origin
 		this.astronauts[1] = new Astronaut ()
-		this.astronauts[1].position.set (-5, -5, 20)
+		this.astronauts[1].position.set (-5, -5, 40)
 		this.astronauts[1].rotation.set (0, -20 * Math.PI/180, 0)
 		this.add (this.astronauts[1])
 
 		this.Earth = new Earth ()
-		this.Earth.position.set (10, -5, -20)
+		this.Earth.position.set (10, -5, -40)
 		this.Earth.rotation.set (0, -20 * Math.PI/180, 0)
 		this.add (this.Earth)
 
