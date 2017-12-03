@@ -30,6 +30,7 @@ function makeSceneGraph () {
 
 	// Other initialization: when the mouse moves, call our function
 	document.addEventListener ("mousedown", onDocumentMouseDown, false)
+	document.body.addEventListener('keydown', keyPressed, false);
 }
 
 class Scene extends THREE.Object3D {
@@ -119,11 +120,30 @@ class Earth extends THREE.Object3D {
 		bool = 0;
 		} */
 		
-		
-		var a = this.earthMesh.rotation.y 
+		/*
+		var a = earthMesh.rotation.y 
 		a += .0005 
 		this.earthMeshrotation.set (0, a, 0)
+		*/
 		
+		function keyPressed(e){
+		  switch(e.key) {
+			case 'ArrowUp':
+			earthMesh.rotateX(-0.1);
+			break;
+		    case 'ArrowDown':
+			earthMesh.rotateX(0.1);
+			break;
+		    case 'ArrowLeft':
+			earthMesh.rotateY(-0.1);
+			break;
+		    case 'ArrowRight':
+			earthMesh.rotateY(0.1);
+			break;
+		  }
+		  e.preventDefault();
+		  render();
+}
 
 	}
 	
