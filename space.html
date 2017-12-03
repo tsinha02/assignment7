@@ -126,6 +126,7 @@ class Earth extends THREE.Object3D {
 }
 
 function keyPressed(e){
+		  e.preventDefault();
 		  switch(e.key) {
 			case 'ArrowUp':
 			earthMesh.rotateX(-0.1);
@@ -140,7 +141,6 @@ function keyPressed(e){
 			earthMesh.rotateY(0.1);
 			break;
 		  }
-		  e.preventDefault();
 		  render();
 }
 
