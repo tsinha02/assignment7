@@ -24,17 +24,6 @@ var myScene
 var bool = 0
 var earthMesh
 
-
-function makeSceneGraph () {
-	myScene = new Scene()
-	scene.add (myScene)
-	lights = new Lights()
-
-	// Other initialization: when the mouse moves, call our function
-	document.addEventListener ("mousedown", onDocumentMouseDown, false)
-	//document.addEventListener("keydown", keyPressed, false);
-}
-
 class Scene extends THREE.Object3D {
     constructor () {
 
@@ -127,8 +116,16 @@ class Earth extends THREE.Object3D {
 		a += .0020 
 		earthMesh.rotation.set (0, a, 0)
 		
-		/*
-		function keyPressed(e){
+		
+		
+
+
+	}
+	
+
+}
+
+function keyPressed(e){
 		  switch(e.key) {
 			case 'ArrowUp':
 			earthMesh.rotateX(-0.1);
@@ -145,12 +142,6 @@ class Earth extends THREE.Object3D {
 		  }
 		  e.preventDefault();
 		  render();
-		  	*/
-
-
-	}
-	
-
 }
 
 function myFunction() {
@@ -354,6 +345,18 @@ function onDocumentMouseDown (event) {
 		render()
 	}*/
 }
+	
+
+function makeSceneGraph () {
+	myScene = new Scene()
+	scene.add (myScene)
+	lights = new Lights()
+
+	// Other initialization: when the mouse moves, call our function
+	document.addEventListener ("mousedown", onDocumentMouseDown, false)
+	document.addEventListener("keydown", keyPressed, false);
+}
+
 
 </script>
 </head>
