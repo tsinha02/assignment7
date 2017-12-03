@@ -33,7 +33,7 @@ function makeSceneGraph () {
 animate = function () { 
 	requestAnimationFrame( animate ); 
 	myScene.tick() 
-	controls.update()
+	controls.update() 
 }
 
 class Scene extends THREE.Object3D {
@@ -86,6 +86,7 @@ class SpaceField extends THREE.Object3D {
 		material.side  = THREE.BackSide
 		// create the mesh based on geometry and material
 		var mesh  = new THREE.Mesh(geometry, material)
+		scene.add(mesh)
 	}
  }
 
